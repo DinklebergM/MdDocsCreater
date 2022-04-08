@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EuT/hn7o0ubOcjp0pMCib1f4/36fiXCcX7RRNvJZJTit8F6dqWIblxJKPQXh013iqgcAH5wdXqUMe5gR7lEXAQ==",
+  "dgSpecHash": "/tnhmE2lMCFXR9dUwx5SGCc+fvuygqjRlTkBAqfGbQddPN84GycanOQi0zaPxFmVw/81OP3WVKigoLzSm8wZqQ==",
   "success": true,
-  "projectFilePath": "C:\\MarcoW\\MdDocsCreater\\MdDocsCreater.csproj",
+  "projectFilePath": "D:\\Programmieren\\MdDocsCreater\\MdDocsCreater\\MdDocsCreater.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Praktikant\\.nuget\\packages\\materialskin\\0.2.1\\materialskin.0.2.1.nupkg.sha512"
+    "C:\\Users\\Marco\\.nuget\\packages\\materialskin\\0.2.1\\materialskin.0.2.1.nupkg.sha512"
   ],
   "logs": [
     {
