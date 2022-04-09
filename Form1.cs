@@ -55,8 +55,11 @@ namespace MdDocsCreater
                 MessageBox.Show("Every Collumn needs one checked field","Error");
                 return;
             }
-            MdFileWriter.SendDataToMdFileWriter(tbCodePath,lbFileEnd,tbMdPath,cbPublic,cbPrivate,
+
+            MdFileWriter.SendDataToMdFileWriter(tbCodePath,lbFileEnd,tbMdPath,cbPublic,cbPrivate,cbProtected,cbInternal,
                 cbNoReturnValue,cbString,cbInteger,cbBool,cbOther);
+            MdFileWriter.CreateRegex();
+            
         }
         private void btnInfoFileEnd_Click(object sender, EventArgs e)
         {

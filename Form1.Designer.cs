@@ -48,6 +48,8 @@
             this.cbBool = new MaterialSkin.Controls.MaterialCheckBox();
             this.cbOther = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnInfoFileEnd = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.cbProtected = new MaterialSkin.Controls.MaterialCheckBox();
+            this.cbInternal = new MaterialSkin.Controls.MaterialCheckBox();
             this.SuspendLayout();
             // 
             // tbCodePath
@@ -201,7 +203,7 @@
             this.cbPublic.BackColor = System.Drawing.Color.White;
             this.cbPublic.Depth = 0;
             this.cbPublic.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbPublic.Location = new System.Drawing.Point(107, 272);
+            this.cbPublic.Location = new System.Drawing.Point(92, 272);
             this.cbPublic.Margin = new System.Windows.Forms.Padding(0);
             this.cbPublic.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbPublic.MouseState = MaterialSkin.MouseState.HOVER;
@@ -218,7 +220,7 @@
             this.cbPrivate.BackColor = System.Drawing.Color.White;
             this.cbPrivate.Depth = 0;
             this.cbPrivate.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbPrivate.Location = new System.Drawing.Point(107, 302);
+            this.cbPrivate.Location = new System.Drawing.Point(92, 302);
             this.cbPrivate.Margin = new System.Windows.Forms.Padding(0);
             this.cbPrivate.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cbPrivate.MouseState = MaterialSkin.MouseState.HOVER;
@@ -353,12 +355,48 @@
             this.btnInfoFileEnd.UseVisualStyleBackColor = false;
             this.btnInfoFileEnd.Click += new System.EventHandler(this.btnInfoFileEnd_Click);
             // 
+            // cbProtected
+            // 
+            this.cbProtected.AutoSize = true;
+            this.cbProtected.BackColor = System.Drawing.Color.White;
+            this.cbProtected.Depth = 0;
+            this.cbProtected.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbProtected.Location = new System.Drawing.Point(92, 332);
+            this.cbProtected.Margin = new System.Windows.Forms.Padding(0);
+            this.cbProtected.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbProtected.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbProtected.Name = "cbProtected";
+            this.cbProtected.Ripple = true;
+            this.cbProtected.Size = new System.Drawing.Size(90, 30);
+            this.cbProtected.TabIndex = 22;
+            this.cbProtected.Text = "Protected";
+            this.cbProtected.UseVisualStyleBackColor = false;
+            // 
+            // cbInternal
+            // 
+            this.cbInternal.AutoSize = true;
+            this.cbInternal.BackColor = System.Drawing.Color.White;
+            this.cbInternal.Depth = 0;
+            this.cbInternal.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbInternal.Location = new System.Drawing.Point(92, 362);
+            this.cbInternal.Margin = new System.Windows.Forms.Padding(0);
+            this.cbInternal.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cbInternal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cbInternal.Name = "cbInternal";
+            this.cbInternal.Ripple = true;
+            this.cbInternal.Size = new System.Drawing.Size(77, 30);
+            this.cbInternal.TabIndex = 23;
+            this.cbInternal.Text = "Internal";
+            this.cbInternal.UseVisualStyleBackColor = false;
+            // 
             // MdDocsCreater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(691, 495);
+            this.Controls.Add(this.cbInternal);
+            this.Controls.Add(this.cbProtected);
             this.Controls.Add(this.btnInfoFileEnd);
             this.Controls.Add(this.cbOther);
             this.Controls.Add(this.cbBool);
@@ -410,5 +448,7 @@
         public MaterialSkin.Controls.MaterialCheckBox cbOther;
         public ListBox lbFileEnd;
         private MaterialSkin.Controls.MaterialRaisedButton btnInfoFileEnd;
+        public MaterialSkin.Controls.MaterialCheckBox cbProtected;
+        public MaterialSkin.Controls.MaterialCheckBox cbInternal;
     }
 }
