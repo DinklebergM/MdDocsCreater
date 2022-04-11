@@ -50,14 +50,14 @@ namespace MdDocsCreater
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (!cbPrivate.Checked && !cbPublic.Checked ||
-                !cbInteger.Checked && !cbNoReturnValue.Checked && !cbString.Checked && !cbBool.Checked && !cbOther.Checked)
+                !cbInteger.Checked && !cbTask.Checked && !cbString.Checked && !cbBool.Checked && !cbOther.Checked)
             {
                 MessageBox.Show("Every Collumn needs one checked field","Error");
                 return;
             }
 
             MdFileWriter.SendDataToMdFileWriter(tbCodePath,lbFileEnd,tbMdPath,cbPublic,cbPrivate,cbProtected,cbInternal,
-                cbNoReturnValue,cbString,cbInteger,cbBool,cbOther);
+                cbTask,cbVoid,cbString,cbInteger,cbBool,cbOther);
             MdFileWriter.CreateRegex();
             
         }

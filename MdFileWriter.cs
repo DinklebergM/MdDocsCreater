@@ -10,10 +10,12 @@ using System.Text.RegularExpressions;
 
 namespace MdDocsCreater
 {
+    /*
+     * public (async )?Task(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)
+     *  [A-z]*\(
+     */
     internal static class MdFileWriter
     {
-
-
 
         static string codePath;
         static List<string> fileEnds =new();
@@ -24,7 +26,8 @@ namespace MdDocsCreater
         static bool PrivateChecked;
         static bool ProtectedChecked;
         static bool InternalChecked;
-        static bool NoReturnValueChecked;
+        static bool TaskChecked;
+        static bool VoidChecked;
         static bool StringChecked;
         static bool IntegerChecked;
         static bool BoolChecked;
@@ -32,14 +35,16 @@ namespace MdDocsCreater
 
         static List<string> filePaths =new();
         static List<string> fileNames =new();
-        public static void SendDataToMdFileWriter(MaterialSkin.Controls.MaterialSingleLineTextField tbCodePath,
+        public static void SendDataToMdFileWriter(
+        MaterialSkin.Controls.MaterialSingleLineTextField tbCodePath,
         ListBox lbFileEnd,
         MaterialSkin.Controls.MaterialSingleLineTextField tbMdPath,
         MaterialSkin.Controls.MaterialCheckBox cbPublic,
         MaterialSkin.Controls.MaterialCheckBox cbPrivate,
-         MaterialSkin.Controls.MaterialCheckBox cbProtected,
+        MaterialSkin.Controls.MaterialCheckBox cbProtected,
         MaterialSkin.Controls.MaterialCheckBox cbInternal,
-        MaterialSkin.Controls.MaterialCheckBox cbNoReturnValue,
+        MaterialSkin.Controls.MaterialCheckBox cbTask,
+        MaterialSkin.Controls.MaterialCheckBox cbVoid,
         MaterialSkin.Controls.MaterialCheckBox cbString,
         MaterialSkin.Controls.MaterialCheckBox cbInteger,
         MaterialSkin.Controls.MaterialCheckBox cbBool,
@@ -55,7 +60,8 @@ namespace MdDocsCreater
             PrivateChecked=cbPrivate.Checked;
             InternalChecked = cbInternal.Checked;
             ProtectedChecked = cbProtected.Checked;
-            NoReturnValueChecked =cbNoReturnValue.Checked;
+            TaskChecked =cbTask.Checked;
+            VoidChecked = cbVoid.Checked;
             StringChecked=cbString.Checked;
             IntegerChecked=cbInteger.Checked;
             BoolChecked=cbBool.Checked;
@@ -72,6 +78,7 @@ namespace MdDocsCreater
                     {
                         filePaths.Add(i.FullName);
                         fileNames.Add(i.Name.Substring(0,i.Name.Length-fileEnds[a].Length));
+                        File.Create(@mdPath + "\\" + i.Name.Substring(0, i.Name.Length - fileEnds[a].Length) + ".md").Close();
                     }                
                 }
             }
@@ -84,29 +91,34 @@ namespace MdDocsCreater
 
             if (PrivateChecked)
             {
-                if (NoReturnValueChecked)
+                if (TaskChecked)
                 {
 
-                    Regex rx = new(@"private (async)? Task<([a-z]*)> ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"private (async )?Task(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
+                    regexlist.Add(rx);
+                }
+                if (VoidChecked)
+                {
+                    Regex rx = new(@"private (async )?void(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
 
                 if (StringChecked)
                 {
 
-                    Regex rx = new(@"private (async)? string ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"private (async )?string(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (IntegerChecked)
                 {
 
-                    Regex rx = new(@"private (async)? int ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"private (async )?int(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (BoolChecked)
                 {
                     
-                    Regex rx = new(@"private (async)? bool ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"private (async )?bool(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (OtherChecked)
@@ -116,29 +128,35 @@ namespace MdDocsCreater
             }
             if (PublicChecked)
             {
-                if (NoReturnValueChecked)
+                if (TaskChecked)
                 {
 
-                    Regex rx = new(@"public (async)? Task<([a-z]*)> ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"public (async )?Task(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
+                    regexlist.Add(rx);
+                }
+
+                if (VoidChecked)
+                {
+                    Regex rx = new(@"private (async )?void(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
 
                 if (StringChecked)
                 {
 
-                    Regex rx = new(@"public (async)? string ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"public (async )?string(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (IntegerChecked)
                 {
 
-                    Regex rx = new(@"public (async)? int ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"public (async )?int(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (BoolChecked)
                 {
 
-                    Regex rx = new(@"public (async)? bool ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"public (async )?bool(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (OtherChecked)
@@ -148,29 +166,33 @@ namespace MdDocsCreater
             }
             if (InternalChecked)
             {
-                if (NoReturnValueChecked)
+                if (TaskChecked)
                 {
 
-                    Regex rx = new(@"internal (async)? Task<([a-z]*)> ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"internal (async )?Task(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
-
+                if (VoidChecked)
+                {
+                    Regex rx = new(@"private (async )?void(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
+                    regexlist.Add(rx);
+                }
                 if (StringChecked)
                 {
 
-                    Regex rx = new(@"internal (async)? string ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"internal (async )?string(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (IntegerChecked)
                 {
 
-                    Regex rx = new(@"internal (async)? int ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"internal (async )?int(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (BoolChecked)
                 {
 
-                    Regex rx = new(@"internal (async)? bool ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"internal (async )?bool(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (OtherChecked)
@@ -180,29 +202,33 @@ namespace MdDocsCreater
             }
             if (ProtectedChecked)
             {
-                if (NoReturnValueChecked)
+                if (TaskChecked)
                 {
 
-                    Regex rx = new(@"protected (async)? Task<([a-z]*)> ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"protected (async )?Task(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
-
+                if (VoidChecked)
+                {
+                    Regex rx = new(@"private (async )?void(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
+                    regexlist.Add(rx);
+                }
                 if (StringChecked)
                 {
 
-                    Regex rx = new(@"protected (async)? string ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"protected (async )?string(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (IntegerChecked)
                 {
 
-                    Regex rx = new(@"protected (async)? int ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"protected (async )?int(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (BoolChecked)
                 {
 
-                    Regex rx = new(@"protected (async)? bool ([a-zA-Z])*\(.*\)");
+                    Regex rx = new(@"protected (async )?bool(<([A-z<>,\(\) ]*)>)? ([a-zA-Z\<\>])*\([\<\>a-zA-Z\, \=\?\n0-9]*\)");
                     regexlist.Add(rx);
                 }
                 if (OtherChecked)

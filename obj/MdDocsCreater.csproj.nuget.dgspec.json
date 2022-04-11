@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programmieren\\MdDocsCreater\\MdDocsCreater\\MdDocsCreater.csproj": {}
+    "C:\\MarcoW\\Github\\MdDocsCreater\\MdDocsCreater.csproj": {}
   },
   "projects": {
-    "D:\\Programmieren\\MdDocsCreater\\MdDocsCreater\\MdDocsCreater.csproj": {
+    "C:\\MarcoW\\Github\\MdDocsCreater\\MdDocsCreater.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programmieren\\MdDocsCreater\\MdDocsCreater\\MdDocsCreater.csproj",
+        "projectUniqueName": "C:\\MarcoW\\Github\\MdDocsCreater\\MdDocsCreater.csproj",
         "projectName": "MdDocsCreater",
-        "projectPath": "D:\\Programmieren\\MdDocsCreater\\MdDocsCreater\\MdDocsCreater.csproj",
-        "packagesPath": "C:\\Users\\Marco\\.nuget\\packages\\",
-        "outputPath": "D:\\Programmieren\\MdDocsCreater\\MdDocsCreater\\obj\\",
+        "projectPath": "C:\\MarcoW\\Github\\MdDocsCreater\\MdDocsCreater.csproj",
+        "packagesPath": "C:\\Users\\Praktikant\\.nuget\\packages\\",
+        "outputPath": "C:\\MarcoW\\Github\\MdDocsCreater\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Praktikant\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
